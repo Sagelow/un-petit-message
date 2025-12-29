@@ -22,6 +22,7 @@ body{
     color: #ffffff;
     font-family: 'Minecraftia', monospace;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .center {
@@ -43,6 +44,7 @@ body{
 
 
 .tiktok{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 5vh;
     font-weight: normal;
     color: red;
@@ -52,6 +54,7 @@ body{
 
 
 span{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 2vh;
     font-weight: normal;
     color: red;
@@ -83,7 +86,7 @@ span{
 
 .rose {
     align-self: flex-end;
-    margin-top: auto;
-    width: 80px;
+    margin-top: -5vh;
+    width: 100px;
     height: auto;
 }
