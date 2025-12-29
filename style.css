@@ -62,6 +62,15 @@ span{
     align-items: center;
 }
 
+.roro{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 2vh;
+    font-weight: normal;
+    color: rgb(76, 127, 255);
+    justify-content: center;
+    align-items: center;
+}
+
 #title{
     font-size: 3.5vh;
     font-weight: bold;
