@@ -7,17 +7,26 @@
 
 body{
     position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;   
-    background-color: #fcc2ff;
-    color: #ffffff;
     justify-content: center;
+    background: linear-gradient(
+        to bottom,
+        #fcaed0,  /* rose clair */
+        #fc7ba2,  /* rose moyen */
+        #ec598a   /* rose foncé */
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
     font-family: 'Minecraftia', monospace;
-    margin: 0px;
+    margin: 0;
 }
 
 .center {
-    min-height: 78vh;
-    max-height: 89vh;
+    min-height: 75vh;
+    max-height: 85vh;
     margin-left: 1vh;
     margin-right: 1vh;
     display: flex;
@@ -26,13 +35,24 @@ body{
     align-items: center;
 }
 .main{
-    padding-top: 5vh;
+    padding-top: 8vh;
     justify-content: center;
     display: flex;
-    font-size: 24px;
+    font-size: 3vh;
 }
 
+
+.tiktok{
+    font-size: 5vh;
+    font-weight: normal;
+    color: red;
+    justify-content: center;
+    align-items: center;
+}
+
+
 span{
+    font-size: 2vh;
     font-weight: normal;
     color: red;
     justify-content: center;
@@ -40,17 +60,16 @@ span{
 }
 
 #title{
-    font-size: 30px;
+    font-size: 3.5vh;
     font-weight: bold;
     justify-content: center;
     display: flex;
-    margin: 4px;
+    margin: 2vh;
 }
 
 #message{
     text-align: center;
     justify-content: center;
-    font-size: 16px;
     font-weight: normal;
     margin: 0px;
     margin-bottom: 2vh;
@@ -59,5 +78,12 @@ span{
 #timer{
     justify-content: center;
     display: flex;
-    font-size: 16px;
+    font-size: 2vh;
+}
+
+.rose {
+    align-self: flex-end;
+    margin-top: auto;
+    width: 80px;
+    height: auto;
 }

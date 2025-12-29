@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (currentMessage.fontSize) {
           messageEl.style.fontSize = currentMessage.fontSize;
         } else {
-          messageEl.style.fontSize = "16px"; // taille par défaut
+          messageEl.style.fontSize = "2vh"; // taille par défaut
         }
 
         // Si tu veux, afficher un compte à rebours jusqu'au prochain message

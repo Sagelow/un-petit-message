@@ -1,11 +1,14 @@
 {
-  "2025-12-29T05:00": {
+  "2025-01-01T00:00": {
     "title": "",
-    "message": "<span>Tic...Tac...</span>",
-    "fontSize": "32px"
+    "message": "<span class='tiktok'>Tic...Tac...</span>"
   },
-  "2025-12-29T06:25": {
+  "2025-12-29T19:26": {
     "title": "Message du jour",
-    "message": "<span>&lt;Sovann&gt;</span>&nbsp:&nbspBonne année !! J'espère que tu passes une bonne soirée car c'est le nouvel an !<br><br>Je te souhaite plein de bonnes choses pour cette nouvelle année qui commence !<br><br>Gros bisous ! <3"
+    "message": "<span>&lt;Sovann&gt;</span>&nbsp:&nbspBonne année !! Je te souhaite plein de bonnes choses pour cette nouvelle année qui commence !<br><br>Gros bisous ! <3"
+  },
+  "2026-01-02T00:00": {
+    "title": "Message du jour",
+    "message": "<span>&lt;Sovann&gt;</span>&nbsp:&nbspUne nouvelle année s'annonce alors il faut tout mettre en oeuvre pour la réussir !"
   }
 }
