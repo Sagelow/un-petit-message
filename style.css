@@ -9,7 +9,42 @@
 
 /* Presentation */
 
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: -1;
+
+    background: url("img/sky.avif") center / cover no-repeat;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 50%,
+        black 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 50%,
+        black 100%
+    );
+}
+
+/* Image du ciel */
+.sky img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* remplit sans déformer */
+  display: block;       /* enlève les espaces blancs */
+}
+
+
 body{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;   
@@ -26,6 +61,48 @@ body{
     font-family: 'Minecraftia', monospace;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 35vh;              /* hauteur du ciel */
+
+  background-image: url("img/skyp.jpg");
+  background-size: cover;
+  background-position: center;
+
+  z-index: -1;               /* DERRIÈRE le texte */
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: calc(35vh - 80px);
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 174, 208, 0),
+    #fcaed0
+  );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 55%,
+        black 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 55%,
+        black 100%
+    );
+  z-index: -1;
 }
 
 .center {
@@ -141,6 +218,15 @@ hr {
     font-size: 3vh;
     font-weight: normal;
     color: rgb(255, 239, 185);
+    justify-content: center;
+    align-items: center;
+}
+
+.cece{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(255, 208, 235);
     justify-content: center;
     align-items: center;
 }

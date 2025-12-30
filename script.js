@@ -106,12 +106,12 @@ window.addEventListener("DOMContentLoaded", () => {
           // Clignotement rouge/blanc
           if (!timerEl.dataset.flash) timerEl.dataset.flash = "0";
           timerEl.dataset.flash = timerEl.dataset.flash === "0" ? "1" : "0";
-          timerEl.style.color = timerEl.dataset.flash === "0" ? "red" : "white";
+          timerEl.style.color = timerEl.dataset.flash === "0" ? "white" : "red";
         } else {
           timerEl.textContent = nextKeyStr
             ? `Prochain message dans ${hours}h ${minutes}m ${seconds}s`
             : "";
-          timerEl.style.fontSize = "2vh"; // retour à taille normale
+          timerEl.style.fontSize = "1.5vh"; // retour à taille normale
           timerEl.style.color = ""; // couleur normale
           timerEl.style.paddingTop = "0vh";
         }
