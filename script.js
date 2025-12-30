@@ -1,69 +1,110 @@
-// script.js
 window.addEventListener("DOMContentLoaded", () => {
-  fetch('data.json')
-    .then(response => {
-      if (!response.ok) throw new Error("Impossible de charger data.json");
-      return response.json();
-    })
+  fetch("data.json")
+    .then(res => res.json())
     .then(data => {
-      const keys = Object.keys(data).sort(); // clés triées
-      const titleEl = document.getElementById('title');
-      const messageEl = document.getElementById('message');
-      const timerEl = document.getElementById('timer'); // facultatif
+      const keys = Object.keys(data).sort();
+      const mainEl = document.querySelector(".main");
+      const titleEl = document.getElementById("title");
+      const messageEl = document.getElementById("message");
+      const timerEl = document.getElementById("timer");
+      const imgEl = document.querySelector(".rose");
 
-      function updateMessage() {
+      function getCurrentKey() {
         const now = new Date();
         const yyyy = now.getFullYear();
-        const mm = String(now.getMonth() + 1).padStart(2, '0');
-        const dd = String(now.getDate()).padStart(2, '0');
-        const hh = String(now.getHours()).padStart(2, '0');
-        const min = String(now.getMinutes()).padStart(2, '0');
-
-        const currentKey = `${yyyy}-${mm}-${dd}T${hh}:${min}`;
-
-        // Trouver le dernier message passé ou le premier message si aucun
-        let currentMessage = data[keys[0]];
-        for (let i = 0; i < keys.length; i++) {
-          if (keys[i] <= currentKey) {
-            currentMessage = data[keys[i]];
-          } else {
-            break;
-          }
-        }
-
-        // Afficher le message
-        titleEl.textContent = currentMessage.title;
-        messageEl.innerHTML = currentMessage.message;
-
-        // Appliquer une taille de police spéciale si définie dans le JSON
-        if (currentMessage.fontSize) {
-          messageEl.style.fontSize = currentMessage.fontSize;
-        } else {
-          messageEl.style.fontSize = "2vh"; // taille par défaut
-        }
-
-        // Si tu veux, afficher un compte à rebours jusqu'au prochain message
-        const nextKey = keys.find(k => k > currentKey);
-        if (nextKey && timerEl) {
-          const targetDate = new Date(nextKey);
-          let diff = targetDate - now;
-          if (diff < 0) diff = 0;
-          const hours = Math.floor(diff / (1000 * 60 * 60));
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-          timerEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-        } else if (timerEl) {
-          timerEl.textContent = "";
-        }
+        const mm = String(now.getMonth() + 1).padStart(2, "0");
+        const dd = String(now.getDate()).padStart(2, "0");
+        const hh = String(now.getHours()).padStart(2, "0");
+        const min = String(now.getMinutes()).padStart(2, "0");
+        return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
       }
 
-      // Mettre à jour immédiatement et toutes les secondes
-      updateMessage();
-      setInterval(updateMessage, 1000);
+      function updateMessages() {
+        const currentKey = getCurrentKey();
+
+        let current = data[keys[0]];
+        for (const key of keys) {
+          if (key <= currentKey) current = data[key];
+          else break;
+        }
+
+        titleEl.textContent = current.title || "";
+        messageEl.innerHTML = "";
+
+        let isTicTac = false;
+
+        if (Array.isArray(current.messages)) {
+          current.messages.forEach((msg, index) => {
+            const div = document.createElement("div");
+            div.classList.add("message-item");
+            div.classList.add(`delay-${index + 1}`);
+
+            const author = document.createElement("span");
+            author.className = msg.class || "";
+
+            if (msg.author === "Tic...Tac...") {
+              isTicTac = true;
+              author.textContent = ""; // on ne veut pas afficher de texte
+            } else {
+              author.textContent = `<${msg.author}>`;
+            }
+
+            const text = document.createElement("div");
+            text.innerHTML = msg.text;
+
+            div.appendChild(author);
+            div.appendChild(text);
+
+            messageEl.appendChild(div);
+
+            if (msg.author !== "Tic...Tac..." && index < current.messages.length - 1) {
+              const hr = document.createElement("hr");
+              messageEl.appendChild(hr);
+            }
+          });
+        }
+
+        // Supprimer ou réafficher la div .main uniquement pour Tic...Tac...
+        if (isTicTac && mainEl) {
+          mainEl.remove(); // supprime la div .main
+        } else if (!isTicTac && !document.querySelector(".main")) {
+          // si ce n’est pas Tic...Tac... et que .main n’existe plus, on peut la recréer
+          const newMain = document.createElement("div");
+          newMain.className = "main";
+          newMain.textContent = "1 jour, 1 message !";
+          document.body.insertBefore(newMain, document.querySelector(".center"));
+        }
+
+        // Timer jusqu’au prochain message
+        function updateTimer() {
+          const now = new Date();
+          const nextKeyStr = keys.find(k => k > currentKey);
+          if (!nextKeyStr) {
+            timerEl.textContent = "";
+            return;
+          }
+
+          const nextDate = new Date(nextKeyStr);
+          let diff = nextDate - now;
+          if (diff < 0) diff = 0;
+
+          const h = Math.floor(diff / 1000 / 60 / 60);
+          const m = Math.floor((diff / 1000 / 60) % 60);
+          const s = Math.floor((diff / 1000) % 60);
+
+          timerEl.textContent = isTicTac ? `${h}h ${m}m ${s}s` : `Prochain message dans ${h}h ${m}m ${s}s`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      }
+
+      updateMessages();
+      setInterval(updateMessages, 60 * 1000);
     })
-    .catch(error => {
-      console.error("Erreur :", error);
-      document.getElementById('title').textContent = "Erreur de chargement";
-      document.getElementById('message').textContent = "";
+    .catch(err => {
+      console.error(err);
+      titleEl.textContent = "💔";
+      messageEl.textContent = "Impossible de charger les messages";
     });
 });

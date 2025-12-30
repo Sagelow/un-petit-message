@@ -1,3 +1,5 @@
+/* Font */
+
 @font-face {
     font-family: 'Minecraftia';
     src: url('minecraftia/Minecraftia-Regular.ttf') format('truetype');
@@ -5,8 +7,9 @@
     font-style: normal;
 }
 
+/* Presentation */
+
 body{
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;   
@@ -27,7 +30,6 @@ body{
 
 .center {
     min-height: 75vh;
-    max-height: 85vh;
     margin-left: 1vh;
     margin-right: 1vh;
     display: flex;
@@ -35,13 +37,27 @@ body{
     justify-content: center;
     align-items: center;
 }
-.main{
-    padding-top: 8vh;
-    justify-content: center;
-    display: flex;
-    font-size: 3vh;
+
+/* Timer spécial Tic...Tac... */
+#timer.tictac {
+    font-size: 2vh;
+    font-weight: bold;
+    color: red;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    animation: fadeUp 1s forwards;
 }
 
+.main{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    padding-top: 8vh;
+    padding-bottom: 2vh;
+    justify-content: center;
+    display: flex;
+    font-size: 3.5vh;
+    color: #ffffff;
+}
 
 .tiktok{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -52,8 +68,49 @@ body{
     align-items: center;
 }
 
+#title{
+    font-size: 3vh;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+}
 
-span{
+#message{
+    text-align: center;
+    justify-content: center;
+    font-weight: normal;
+    margin: 0px;
+    margin-bottom: 2vh;
+}
+
+#timer{
+    justify-content: center;
+    display: flex;
+    font-size: 1.5vh;
+}
+
+.rose {
+    align-self: flex-end;
+    margin-top: -5vh;
+    width: 100px;
+    height: auto;
+}
+
+.message-item {
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  margin: 1vh 0;
+}
+
+/* Personne */
+
+.sovann{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 2vh;
     font-weight: normal;
@@ -71,31 +128,35 @@ span{
     align-items: center;
 }
 
-#title{
-    font-size: 3.5vh;
-    font-weight: bold;
-    justify-content: center;
-    display: flex;
-    margin: 2vh;
-}
-
-#message{
-    text-align: center;
-    justify-content: center;
-    font-weight: normal;
-    margin: 0px;
-    margin-bottom: 2vh;
-}
-
-#timer{
-    justify-content: center;
-    display: flex;
+.kazhy{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 2vh;
+    font-weight: normal;
+    color: rgb(118, 255, 69);
+    justify-content: center;
+    align-items: center;
 }
 
-.rose {
-    align-self: flex-end;
-    margin-top: -5vh;
-    width: 100px;
-    height: auto;
+/* Animation pour fade + montée */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.message-item {
+  margin-bottom: 2vh;
+  opacity: 0; /* invisible au départ */
+  animation: fadeUp 0.8s ease forwards; /* déclenche fade + montée */
+}
+
+/* Si tu veux un délai progressif pour chaque message */
+.message-item.delay-1 { animation-delay: 0.1s; }
+.message-item.delay-2 { animation-delay: 0.3s; }
+.message-item.delay-3 { animation-delay: 0.5s; }
+.message-item.delay-4 { animation-delay: 0.7s; }

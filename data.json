@@ -1,14 +1,37 @@
 {
   "2025-01-01T00:00": {
     "title": "",
-    "message": "<span class='tiktok'>Tic...Tac...</span>"
+    "messages": [
+      {
+        "author": "Tic...Tac...",
+        "class": "tiktok",
+        "text": ""
+      }
+    ]
   },
-  "2025-12-29T19:57": {
+  "2026-01-01T00:00": {
     "title": "Message du jour",
-    "message": "<span>&lt;Sovann&gt;</span>&nbsp:&nbspBonne année !! Je te souhaite plein de bonnes choses pour cette nouvelle année qui commence !<br>Gros bisous ! <3<br><br><span class='roro'>&lt;Roro&gt;</span>&nbsp:&nbspBonne année mon cœur. Parfois il nous arrive de traverser des moments difficiles et de se sentir perdue et incertaine, mais sache que je suis et que je serai toujours à tes côtés pour t'épauler. J'espère que 2026 sera pour toi une année remplie de bonheur et de douceur, et que tu en seras comblée. Tu es celle qui compte le plus pour moi, je t'aime fort Talichoupi <33"
+    "messages": [
+      {
+        "author": "Sovann",
+        "class": "sovann",
+        "text": "Bonne année !! Je te souhaite plein de bonnes choses pour cette nouvelle année qui commence !"
+      },
+      {
+        "author": "Roro",
+        "class": "roro",
+        "text": "Bonne année mon cœur. Parfois il nous arrive de traverser des moments difficiles et de se sentir perdue et incertaine, mais sache que je suis et que je serai toujours à tes côtés pour t'épauler. J'espère que 2026 sera pour toi une année remplie de bonheur et de douceur, et que tu en seras comblée. Tu es celle qui compte le plus pour moi, je t'aime fort Talichoupi <33"
+      }
+    ]
   },
   "2026-01-02T00:00": {
     "title": "Message du jour",
-    "message": "<span>&lt;Sovann&gt;</span>&nbsp:&nbspUne nouvelle année s'annonce alors il faut tout mettre en oeuvre pour la réussir !"
+    "messages": [
+      {
+        "author": "Sovann",
+        "class": "sovann",
+        "text": "Une nouvelle année s'annonce alors il faut tout mettre en oeuvre pour la réussir !"
+      }
+    ]
   }
 }
