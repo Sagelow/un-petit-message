@@ -16,7 +16,7 @@ body{
     justify-content: center;
     background: linear-gradient(
         to bottom,
-        #fcaed0,  /* rose clair */
+        #ffa9ce,  /* rose clair */
         #fc7ba2,  /* rose moyen */
         #ec598a   /* rose foncé */
     );
@@ -88,7 +88,7 @@ body{
 
 .message-item {
     margin-bottom: 2vh;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
 
 hr {
@@ -102,7 +102,7 @@ hr {
 
 .sovann{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
+    font-size: 3vh;
     font-weight: normal;
     color: red;
     justify-content: center;
@@ -111,7 +111,7 @@ hr {
 
 .roro{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
+    font-size: 3vh;
     font-weight: normal;
     color: rgb(76, 127, 255);
     justify-content: center;
@@ -120,9 +120,27 @@ hr {
 
 .kazhy{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 2vh;
+    font-size: 3vh;
     font-weight: normal;
-    color: rgb(118, 255, 69);
+    color: rgb(69, 255, 249);
+    justify-content: center;
+    align-items: center;
+}
+
+.manon{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(164, 242, 136);
+    justify-content: center;
+    align-items: center;
+}
+
+.remy{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(255, 239, 185);
     justify-content: center;
     align-items: center;
 }
@@ -150,3 +168,6 @@ hr {
 .message-item.delay-2 { animation-delay: 0.3s; }
 .message-item.delay-3 { animation-delay: 0.5s; }
 .message-item.delay-4 { animation-delay: 0.7s; }
+.message-item.delay-5 { animation-delay: 0.9s; }
+.message-item.delay-6 { animation-delay: 1.1s; }
+.message-item.delay-7 { animation-delay: 1.3s; }
