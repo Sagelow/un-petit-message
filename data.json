@@ -9,7 +9,7 @@
       }
     ]
   },
-  "2026-01-01T00:00": {
+  "2025-12-30T04:45": {
     "title": "Message du jour",
     "messages": [
       {
@@ -21,16 +21,32 @@
         "author": "Roro",
         "class": "roro",
         "text": "Bonne année mon cœur. Parfois il nous arrive de traverser des moments difficiles et de se sentir perdue et incertaine, mais sache que je suis et que je serai toujours à tes côtés pour t'épauler. J'espère que 2026 sera pour toi une année remplie de bonheur et de douceur, et que tu en seras comblée. Tu es celle qui compte le plus pour moi, je t'aime fort Talichoupi <33"
+      },
+      {
+        "author": "Kazhy",
+        "class": "kazhy",
+        "text": "J'attends toujours son texte."
       }
+      
     ]
   },
-  "2026-01-02T00:00": {
+  "2025-12-30T04:45:10": {
     "title": "Message du jour",
     "messages": [
       {
         "author": "Sovann",
         "class": "sovann",
         "text": "Une nouvelle année s'annonce alors il faut tout mettre en oeuvre pour la réussir !"
+      }
+    ]
+  },
+  "2025-12-30T04:45:20": {
+    "title": "Message du jour",
+    "messages": [
+      {
+        "author": "Sovann",
+        "class": "sovann",
+        "text": "Je vais devenir fou."
       }
     ]
   }

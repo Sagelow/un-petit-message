@@ -29,23 +29,13 @@ body{
 }
 
 .center {
-    min-height: 75vh;
+    min-height: 61vh;
     margin-left: 1vh;
     margin-right: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-/* Timer spécial Tic...Tac... */
-#timer.tictac {
-    font-size: 2vh;
-    font-weight: bold;
-    color: red;
-    margin: 0;
-    transform: translate(-50%, -50%);
-    animation: fadeUp 1s forwards;
 }
 
 .main{
