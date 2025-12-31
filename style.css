@@ -46,8 +46,8 @@ body {
   color: white;
   background: linear-gradient(
     to bottom,
-    #ffc8de,
-    #fc7ba2,
+    #ffbdd8,
+    #ffbcd7,
     #ec598a
   );
 }
@@ -88,7 +88,7 @@ body::after {
 }
 
 .center {
-    min-height: 61vh;
+    min-height: 63.5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,7 +246,7 @@ body.countdown::after {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 3vh;
     font-weight: normal;
-    color: rgb(0, 0, 0);
+    color: rgb(176, 176, 176);
     justify-content: center;
     align-items: center;
 }
@@ -265,6 +265,24 @@ body.countdown::after {
     font-size: 3vh;
     font-weight: normal;
     color: rgb(157, 0, 255);
+    justify-content: center;
+    align-items: center;
+}
+
+.astra{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(97, 255, 92);
+    justify-content: center;
+    align-items: center;
+}
+
+.eladia{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(0, 0, 0);
     justify-content: center;
     align-items: center;
 }
@@ -299,3 +317,5 @@ body.countdown::after {
 .message-item.delay-8 { animation-delay: 1.5s; }
 .message-item.delay-9 { animation-delay: 1.7s; }
 .message-item.delay-10 { animation-delay: 1.9s; }
+.message-item.delay-11 { animation-delay: 2.1s; }
+.message-item.delay-12 { animation-delay: 2.3s; }
