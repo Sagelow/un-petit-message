@@ -14,55 +14,45 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 10vh;
+    height: 35vh;
     z-index: -1;
 
-    background: url("img/sky.avif") center / cover no-repeat;
+    background-image: url("img/skypink.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center -300px;
 
     mask-image: linear-gradient(
         to bottom,
-        transparent 0%,
-        transparent 50%,
-        black 100%
+        black 0%,
+        black 70%,
+        transparent 100%
     );
 
     -webkit-mask-image: linear-gradient(
         to bottom,
-        transparent 0%,
-        transparent 50%,
-        black 100%
+        black 0%,
+        black 70%,
+        transparent 100%
     );
 }
 
-/* Image du ciel */
-.sky img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;    /* remplit sans déformer */
-  display: block;       /* enlève les espaces blancs */
+
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: 'Minecraftia', monospace;
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    #ffc8de,
+    #fc7ba2,
+    #ec598a
+  );
 }
 
-
-body{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;   
-    justify-content: center;
-    background: linear-gradient(
-        to bottom,
-        #ffa9ce,  /* rose clair */
-        #fc7ba2,  /* rose moyen */
-        #ec598a   /* rose foncé */
-    );
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #ffffff;
-    font-family: 'Minecraftia', monospace;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
+/* CIEL */
 body::before {
   content: "";
   position: absolute;
@@ -70,50 +60,47 @@ body::before {
   left: 0;
 
   width: 100%;
-  height: 35vh;              /* hauteur du ciel */
+  height: 35vh;
 
-  background-image: url("img/skyp.jpg");
+  background-image: url("img/skypink.jpg");
   background-size: cover;
-  background-position: center;
-
-  z-index: -1;               /* DERRIÈRE le texte */
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
+/* FONDU ENTRE CIEL ET DÉGRADÉ */
 body::after {
   content: "";
   position: absolute;
   top: calc(35vh - 80px);
   left: 0;
+
   width: 100%;
   height: 80px;
+
   background: linear-gradient(
     to bottom,
-    rgba(252, 174, 208, 0),
-    #fcaed0
+    rgba(255, 169, 206, 0),
+    #ffbbd8
   );
-      mask-image: linear-gradient(
-        to bottom,
-        transparent 55%,
-        black 100%
-    );
 
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 55%,
-        black 100%
-    );
   z-index: -1;
 }
 
 .center {
     min-height: 61vh;
-    margin-left: 1vh;
-    margin-right: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
+    width: 96%;         /* largeur totale */
+    padding: 0 2%;      /* espace intérieur gauche/droite */
+    margin: 0 auto;     /* centre horizontalement */
+    box-sizing: border-box;
 }
+
 
 .main{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -157,7 +144,8 @@ body::after {
 }
 
 .rose {
-    align-self: flex-end;
+    display: block;
+    margin-left: auto;
     margin-top: -5vh;
     width: 100px;
     height: auto;
@@ -173,6 +161,20 @@ hr {
   height: 2px;
   background-color: rgb(255, 255, 255);
   margin: 1vh 0;
+}
+
+/* Ajoute à la fin de ton CSS */
+body.countdown {
+    background: black !important;
+}
+
+body.countdown .sky {
+    display: none !important;
+}
+
+body.countdown::before,
+body.countdown::after {
+    display: none !important;
 }
 
 /* Personne */
@@ -231,6 +233,33 @@ hr {
     align-items: center;
 }
 
+.dahlia{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(218, 133, 255);
+    justify-content: center;
+    align-items: center;
+}
+
+.nahid{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+}
+
+.leonie{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(202, 23, 23);
+    justify-content: center;
+    align-items: center;
+}
+
 /* Animation pour fade + montée */
 @keyframes fadeUp {
   0% {
@@ -249,6 +278,7 @@ hr {
   animation: fadeUp 0.8s ease forwards; /* déclenche fade + montée */
 }
 
+
 /* Si tu veux un délai progressif pour chaque message */
 .message-item.delay-1 { animation-delay: 0.1s; }
 .message-item.delay-2 { animation-delay: 0.3s; }
@@ -257,3 +287,5 @@ hr {
 .message-item.delay-5 { animation-delay: 0.9s; }
 .message-item.delay-6 { animation-delay: 1.1s; }
 .message-item.delay-7 { animation-delay: 1.3s; }
+.message-item.delay-8 { animation-delay: 1.5s; }
+.message-item.delay-9 { animation-delay: 1.7s; }

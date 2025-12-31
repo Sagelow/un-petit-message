@@ -2,12 +2,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const timerEl = document.getElementById("timer");
   const titleEl = document.getElementById("title");
   const messageEl = document.getElementById("message");
-  const centerEl = document.querySelector(".center");
   const bodyEl = document.body;
   const imgEl = document.querySelector(".rose");
   const mainElOriginal = document.querySelector(".main");
 
-  let lastKeyDisplayed = null; // Pour suivre le dernier message affiché
+  let lastKeyDisplayed = null;
 
   fetch("data.json")
     .then(res => res.json())
@@ -16,25 +15,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
       function getCurrentKey() {
         const now = new Date();
-        const yyyy = now.getFullYear();
-        const mm = String(now.getMonth() + 1).padStart(2, "0");
-        const dd = String(now.getDate()).padStart(2, "0");
-        const hh = String(now.getHours()).padStart(2, "0");
-        const min = String(now.getMinutes()).padStart(2, "0");
-        const sec = String(now.getSeconds()).padStart(2, "0");
-        return `${yyyy}-${mm}-${dd}T${hh}:${min}:${sec}`;
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
       }
 
       function displayMessages(msgData) {
         titleEl.textContent = msgData.title || "";
         messageEl.innerHTML = "";
-
         if (!Array.isArray(msgData.messages)) return;
 
         msgData.messages.forEach((msg, index) => {
           const div = document.createElement("div");
-          div.classList.add("message-item");
-          div.classList.add(`delay-${index + 1}`);
+          div.classList.add("message-item", `delay-${index + 1}`);
 
           const author = document.createElement("span");
           author.className = msg.class || "";
@@ -54,11 +45,27 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       }
 
+      function toggleCountdown(isCountdown) {
+        const skyEl = document.querySelector(".sky");
+        if (isCountdown) {
+          bodyEl.style.background = "black";
+          if (skyEl) skyEl.style.display = "none";
+          bodyEl.classList.add("countdown");
+          if (mainElOriginal) mainElOriginal.style.display = "none";
+          if (imgEl) imgEl.style.display = "none";
+        } else {
+          bodyEl.style.background = "";
+          if (skyEl) skyEl.style.display = "block";
+          bodyEl.classList.remove("countdown");
+          if (mainElOriginal) mainElOriginal.style.display = "flex";
+          if (imgEl) imgEl.style.display = "block";
+        }
+      }
+
       function update() {
         const now = new Date();
         const currentKey = getCurrentKey();
 
-        // Trouver le dernier message passé
         let currentMsgKey = keys[0];
         for (const key of keys) {
           if (key <= currentKey) currentMsgKey = key;
@@ -68,29 +75,15 @@ window.addEventListener("DOMContentLoaded", () => {
         const currentMsg = data[currentMsgKey];
         const isCountdown = currentMsg.messages.some(msg => msg.author === "Tic...Tac...");
 
-        // Supprimer ou restaurer .main et l'image
-        const mainEl = document.querySelector(".main");
-        if (isCountdown) {
-          if (mainEl) mainEl.remove();
-          if (imgEl) imgEl.style.display = "none";
-        } else {
-          if (!mainEl && mainElOriginal) {
-            const newMain = document.createElement("div");
-            newMain.className = "main";
-            newMain.textContent = mainElOriginal.textContent;
-            bodyEl.insertBefore(newMain, centerEl);
-          }
-          if (imgEl) imgEl.style.display = "block";
-        }
+        toggleCountdown(isCountdown);
 
-        // Affichage des messages si c’est un nouveau
         if (!isCountdown && lastKeyDisplayed !== currentMsgKey) {
           lastKeyDisplayed = currentMsgKey;
           displayMessages(currentMsg);
         }
 
         // Timer
-        let nextKeyStr = keys.find(k => k > currentKey);
+        const nextKeyStr = keys.find(k => k > currentKey);
         let diff = nextKeyStr ? new Date(nextKeyStr) - now : 0;
         if (diff < 0) diff = 0;
 
@@ -100,25 +93,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (isCountdown) {
           timerEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-          timerEl.style.fontSize = "4vh"; // timer plus grand pendant le compte à rebours
+          timerEl.style.fontSize = "6vh";
           timerEl.style.paddingTop = "25vh";
 
-          // Clignotement rouge/blanc
-          if (!timerEl.dataset.flash) timerEl.dataset.flash = "0";
-          timerEl.dataset.flash = timerEl.dataset.flash === "0" ? "1" : "0";
-          timerEl.style.color = timerEl.dataset.flash === "0" ? "white" : "red";
+          // Couleur rouge si seconde paire, blanc si impaire
+          timerEl.style.color = seconds % 2 === 0 ? "red" : "white";
+
         } else {
           timerEl.textContent = nextKeyStr
             ? `Prochain message dans ${hours}h ${minutes}m ${seconds}s`
             : "";
-          timerEl.style.fontSize = "1.5vh"; // retour à taille normale
-          timerEl.style.color = ""; // couleur normale
+          timerEl.style.fontSize = "1.5vh";
+          timerEl.style.color = "";
           timerEl.style.paddingTop = "0vh";
         }
       }
 
-      update(); // premier affichage
-      setInterval(update, 1000); // update chaque seconde
+      update();
+      setInterval(update, 1000);
     })
     .catch(err => {
       console.error(err);
