@@ -13,11 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       const keys = Object.keys(data).sort();
 
-      function getCurrentKey() {
-        const now = new Date();
-        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-      }
-
       function displayMessages(msgData) {
         titleEl.textContent = msgData.title || "";
         messageEl.innerHTML = "";
@@ -64,11 +59,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
       function update() {
         const now = new Date();
-        const currentKey = getCurrentKey();
 
+        // Trouver le dernier message passé
         let currentMsgKey = keys[0];
         for (const key of keys) {
-          if (key <= currentKey) currentMsgKey = key;
+          if (new Date(key) <= now) currentMsgKey = key;
           else break;
         }
 
@@ -83,9 +78,8 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
         // Timer
-        const nextKeyStr = keys.find(k => k > currentKey);
+        const nextKeyStr = keys.find(k => new Date(k) > now);
         let diff = nextKeyStr ? new Date(nextKeyStr) - now : 0;
-        if (diff < 0) diff = 0;
 
         const hours = Math.floor(diff / 1000 / 60 / 60);
         const minutes = Math.floor((diff / 1000 / 60) % 60);
@@ -93,18 +87,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (isCountdown) {
           timerEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-          timerEl.style.fontSize = "6vh";
+          timerEl.style.fontSize = "4vh";
           timerEl.style.paddingTop = "25vh";
-
-          // Couleur rouge si seconde paire, blanc si impaire
           timerEl.style.color = seconds % 2 === 0 ? "red" : "white";
-
         } else {
           timerEl.textContent = nextKeyStr
             ? `Prochain message dans ${hours}h ${minutes}m ${seconds}s`
-            : "";
+            : "Aucun message à venir";
           timerEl.style.fontSize = "1.5vh";
-          timerEl.style.color = "";
+          timerEl.style.color = "white";
           timerEl.style.paddingTop = "0vh";
         }
       }

@@ -255,7 +255,16 @@ body.countdown::after {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 3vh;
     font-weight: normal;
-    color: rgb(202, 23, 23);
+    color: rgb(171, 10, 10);
+    justify-content: center;
+    align-items: center;
+}
+
+.gab{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3vh;
+    font-weight: normal;
+    color: rgb(157, 0, 255);
     justify-content: center;
     align-items: center;
 }
@@ -289,3 +298,4 @@ body.countdown::after {
 .message-item.delay-7 { animation-delay: 1.3s; }
 .message-item.delay-8 { animation-delay: 1.5s; }
 .message-item.delay-9 { animation-delay: 1.7s; }
+.message-item.delay-10 { animation-delay: 1.9s; }
