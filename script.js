@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (isCountdown) {
           timerEl.textContent = `${hours}h ${minutes}m ${seconds}s`;
-          timerEl.style.fontSize = "4vh";
+          timerEl.style.fontSize = "5.5vh";
           timerEl.style.paddingTop = "25vh";
           timerEl.style.color = seconds % 2 === 0 ? "red" : "white";
         } else {
