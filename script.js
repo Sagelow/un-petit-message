@@ -93,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
         } else {
           timerEl.textContent = nextKeyStr
             ? `Prochain message dans ${hours}h ${minutes}m ${seconds}s`
-            : "Aucun message à venir";
+            : "Sois patiente...";
           timerEl.style.fontSize = "1.5vh";
           timerEl.style.color = "white";
           timerEl.style.paddingTop = "0vh";
