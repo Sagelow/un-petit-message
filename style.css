@@ -37,8 +37,6 @@
     );
 }
 
-
-
 body {
   position: relative;
   margin: 0;
@@ -52,7 +50,6 @@ body {
   );
 }
 
-/* CIEL */
 body::before {
   content: "";
   position: absolute;
@@ -163,7 +160,7 @@ hr {
   margin: 1vh 0;
 }
 
-/* Ajoute à la fin de ton CSS */
+/* Supprime tout le body pendant le countdown */
 body.countdown {
     background: black !important;
 }
@@ -306,7 +303,7 @@ body.countdown::after {
 }
 
 
-/* Si tu veux un délai progressif pour chaque message */
+/* Délai progressif de chaque message */
 .message-item.delay-1 { animation-delay: 0.1s; }
 .message-item.delay-2 { animation-delay: 0.3s; }
 .message-item.delay-3 { animation-delay: 0.5s; }

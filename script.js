@@ -11,7 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch("data.json")
     .then(res => res.json())
     .then(data => {
-      const keys = Object.keys(data).sort();
+      const keys = Object.keys(data)
+        .map(key => ({ key, date: new Date(key) }))
+        .filter(entry => !Number.isNaN(entry.date.getTime()))
+        .sort((a, b) => a.date - b.date);
 
       function displayMessages(msgData) {
         titleEl.textContent = msgData.title || "";
@@ -61,11 +64,13 @@ window.addEventListener("DOMContentLoaded", () => {
         const now = new Date();
 
         // Trouver le dernier message passé
-        let currentMsgKey = keys[0];
-        for (const key of keys) {
-          if (new Date(key) <= now) currentMsgKey = key;
+        let currentMsgKey = keys[0]?.key;
+        for (const entry of keys) {
+          if (entry.date <= now) currentMsgKey = entry.key;
           else break;
         }
+
+        if (!currentMsgKey) return;
 
         const currentMsg = data[currentMsgKey];
         const isCountdown = currentMsg.messages.some(msg => msg.author === "Tic...Tac...");
@@ -78,8 +83,8 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
         // Timer
-        const nextKeyStr = keys.find(k => new Date(k) > now);
-        let diff = nextKeyStr ? new Date(nextKeyStr) - now : 0;
+        const nextEntry = keys.find(entry => entry.date > now);
+        let diff = nextEntry ? nextEntry.date - now : 0;
 
         const hours = Math.floor(diff / 1000 / 60 / 60);
         const minutes = Math.floor((diff / 1000 / 60) % 60);
@@ -91,7 +96,7 @@ window.addEventListener("DOMContentLoaded", () => {
           timerEl.style.paddingTop = "25vh";
           timerEl.style.color = seconds % 2 === 0 ? "red" : "white";
         } else {
-          timerEl.textContent = nextKeyStr
+          timerEl.textContent = nextEntry
             ? `Prochain message dans ${hours}h ${minutes}m ${seconds}s`
             : "Sois patiente...";
           timerEl.style.fontSize = "1.5vh";
