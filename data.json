@@ -455,12 +455,32 @@
     ]
   },
   "2026-02-13T00:00": {
+    "title": "Günlük hatırlatma",
+    "messages": [
+      {
+        "author": "Sovann",
+        "class": "sovann",
+        "text": "J'ai tellement de chance de t'avoir rencontré."
+      }
+    ]
+  },
+  "2026-02-14T00:00": {
     "title": "",
     "messages": [
       {
         "author": "Tic...Tac...",
         "class": "tiktok",
         "text": ""
+      }
+    ]
+  },
+  "2026-02-14T18:00": {
+    "title": "Joyeuse Saint-Valentin",
+    "messages": [
+      {
+        "author": "Sovann",
+        "class": "sovann",
+        "text": "Le doute me bloque,<br>Le doute me perd.<br>Il ne va pas de paire<br>Avec mes repères.<br><br>Je résolve un puzzle aux millions de pièces,<br>Chaque partie est d'une délicatesse...<br>En son centre, un manque de maladresse,<br>Un casse tête insoluble sans ta tendresse.<br><br>Devant une foule, je ne chercherai que ton visage.<br>Dans un univers rempli d'étoile, je ne regarderai que Ma soleil.<br>Dans une profonde noirceur, englouti par l'angoisse et la peur,<br>Ton rayon me fraye un chemin vers ton cœur.<br><br>Sache que je ferai tout, pour le conquérir. Mon amour pour toi est indescriptible, tu ne réalises sûrement pas à quel point je suis jaloux et à quel point je te désire Talia.<br>Je te souhaite une joyeuse saint-valentin !<br>Seni seviyorum <3"
       }
     ]
   }
